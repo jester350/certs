@@ -1,0 +1,70 @@
+
+        <div class="page-header">
+            <h1>SSL Certificate Database</h1>
+        </div>
+
+        
+
+<div class="container">
+<div class="jumbotron col-sm-12 pull-center">
+
+<form action="updatecert" method="post" name="updatecert" class="form-horizontal" id="updatecert" encType="multipart/form-data">
+
+<div class="form">
+        <input type="hidden" id="certid" name="certid" value="{{certid}}">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label" align="right">Cert Name</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" name="name" placeholder="name" id="name" value="{{{certname}}}">
+            </div>
+        </div>
+    </div>
+
+        <div class="form-group">
+            <label for="startDate" class="col-sm-2 control-label" align="right">Start Date</label>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" name="start_date" id="startDate" value="{{{sdate}}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="expiryDate" class="col-sm-2 control-label" align="right">Expiry Date</label>
+            <div class="col-md-4">
+                <input type="date" class="form-control" name="expiry_date" id="expiryDate" value="{{{edate}}}">
+            </div>
+        </div>
+
+    <div class="form-group">
+        <label for="system" class="col-sm-2 control-label" align="right">System</label>
+        <input type="hidden" class="form-control" name="system" placeholder="system" id="system" value="{{sysname}}">
+        <div class="col-sm-2">
+        <select name = "systems" class="form-control" align="left">
+            {{#each projects}}
+                <option value="{{projectid}}" id="{{projectname}}" selected="">{{projectname}}</option>
+            {{/each}}
+        </select></div>  
+    </div>          
+    <script>
+        var currsys = document.getElementById("system").value;
+        document.getElementById(currsys).selected = "selected";
+        console.log("SYSTEM "+currsys);
+    </script>
+
+    <div class="form-group">
+        <label for="currentCertFile" class="col-sm-2 control-label" align="right">Cert File</label>
+        <div class="col-sm-2">
+        <input type="text" class="form-control" name="currentCertFile" id="currentCertFile" value="{{{certfile}}}" readonly/><br>
+        
+        <input type="file" name="newcertfile" id="newcertfile">
+        </div>
+    </div>
+    <input type="submit" value='Submit'>
+    </div>
+</form>
+</div></body>
+
+
+<script type="text/javascript">
+$(function() {
+	$( "#Datepicker1" ).datepicker(); 
+});
+</script>
